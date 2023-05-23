@@ -1,15 +1,16 @@
 class Solution {
 public:
-        void subsetsum(int index, vector<int>& nums, vector<int>& subset, vector<vector<int>>& result)
+        void subsetsum(int index, vector<int>& nums, vector<int> subset, vector<vector<int>>& result)
         {
         if (index == nums.size())
         {
             result.push_back(subset);
             return;
         }
-        subset.push_back(nums[index]);
+        //exclude
         subsetsum(index + 1, nums, subset, result);
-        subset.pop_back();
+         //include   
+        subset.push_back(nums[index]);
         subsetsum(index + 1, nums, subset, result);
     }
 
