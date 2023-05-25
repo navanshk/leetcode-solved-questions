@@ -1,22 +1,21 @@
 class Solution {
 public:
-      int f(int i, int j, vector<vector<int>>& dp, vector<int>& nums){
-        if(i==nums.size()){
-            return 0;
+    
+    int lengthOfLIS(vector<int>& arr) {
+        int n=arr.size();
+        vector<int>dp(n,1);
+        int maxi=1;
+        for(int i=0;i<n;i++)
+        {
+          for(int pre=0;pre<i;pre++)
+          {
+              if(arr[pre]<arr[i])
+                  dp[i]=max(dp[i],1+dp[pre]);
+          }
+            maxi=max(maxi,dp[i]);
+              
         }
-        if(dp[i][j+1]!=-1){
-            return dp[i][j+1];
-        }
-        int l=f(i+1, j, dp, nums);
-        if(j==-1 || nums[i]>nums[j]){
-            l=max(l, 1+f(i+1, i, dp, nums));
-        }
-        return dp[i][j+1]=l;
-    }
-    int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-        vector<vector<int>>dp(n, vector<int>(n+1, -1));
-        return f(0, -1, dp, nums);
+        return maxi;
     }
     
 };
