@@ -45,7 +45,7 @@ public:
     }
 
     int maximalRectangle(vector<vector<char>>& matrix) {
-        ios_base::sync_with_stdio(false);
+        
         vector<vector<int>> mat;
         for(int i=0;i<matrix.size();i++){
             vector<int> v;
