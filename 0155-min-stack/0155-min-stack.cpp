@@ -4,7 +4,7 @@ class MinStack {
   public:
     
     MinStack() {
-      while (st.empty() == false) st.pop();
+      
       mini = INT_MAX;
     }
 
